@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<div class="container-md ">
+
+  <div class="row justify-content-around">
+    <h3>Home page</h2>
+  </div>
+
+  <div class="row justify-content-around bg-light p-5 border">
+    <div class="col-md-auto ">
+      <form class="form-inline">
+        <div class="form-group">
+          <label  class="mr-sm-2">起訖期間 </label>
+          <input placeholder="Select date" type="date" id="Select_from_date" class="form-control mb-2 mr-sm-2" onfocus="(this.type='date')" onblur="(this.type='text')">
+       </div>
+       <div class="form-group">
+         <label  class="mr-sm-2"> ～  </label>
+         <input placeholder="Select date" type="date" id="Select_to_date" class="form-control mb-2 mr-sm-2" onfocus="(this.type='date')" onblur="(this.type='text')">
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="Select_Date_Submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Loading Modal Bootstrape 4.3-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <br><br>
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <h5>Loading...</h5>
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

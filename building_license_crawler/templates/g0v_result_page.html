@@ -1,0 +1,84 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-md">
+
+<div class="row justify-content-around">
+    <h3>g0v Results</h2>
+    </div> 
+
+    <div class="row justify-content-around  bg-light">
+      <div class="col-md-auto ">
+
+        <form class="form">
+          <div class="form-group">
+            <label  class="mr-sm-2">主旨 </label>
+            <input type="text" name="lname" value='實價登陸 不動產交易' size="54" disabled="disabled" />
+         </div>
+        </form>
+  
+        <form class="form">
+          <div class="form-group">
+            <label  class="mr-sm-2"> 交易地址 </label>
+            <input type="text" name="lname" value={{ Querry_list_obj.address }} size="50" disabled="disabled" />
+         </div>
+      
+          <div class="form-group">
+            <label  class="mr-sm-2"> 交易總價 </label>
+            <input type="text" name="lname" value={{ Querry_list_obj.sale_price }} disabled="disabled" />
+         </div>
+
+        </form>
+      </div>
+    </div>
+    
+    <div class="row  ">
+      <div class="col" >
+        <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+              <tr>
+                  <th style="min-width: 10px;word-wrap:break-word;">編號</th>
+                  <th style="min-width: 50px;word-wrap:break-word;">統編</th>
+                  <th style="min-width: 50px;word-wrap:break-word;">名稱</th>
+                  <th style="min-width: 150px;word-wrap:break-word;">地址</th>
+                  <th style="min-width: 50px;word-wrap:break-word;">狀況</th>
+                  <th style="min-width: 0px;word-wrap:break-word;">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="btn_send_mail">寄信</button>
+                  </th>
+                  
+              </tr>
+          </thead>
+          <tbody>
+            {% for result in result_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ result.comp_id }}</td> 
+                <td>{{ result.comp_name }}
+
+                    <p><a href="https://www.twincn.com/Lq.aspx?q={{ result.comp_name }}">商工</a></p>
+                    <p>
+                      <a href="https://www.google.com/search?q={{ result.comp_name }}">
+                      <i class="fa fa-google" aria-hidden="true"></i>
+                    </a></p>
+                </td>
+                <td  style="min-width: 100px;word-wrap:break-word;" >新北產業園區_{{ result.comp_address }}</td>
+                <td>{{ result.comp_status }}</td>
+                <td align="center">
+                  <input type="checkbox" name="checkbox_{{ result.comp_id }}" class="inline checkbox " id="checkbox1" value="false" >
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+      </table>
+      <br>
+    </div>
+    
+    
+    
+  </div>
+
+
+{% endblock content %}
+`

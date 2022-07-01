@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+
+      table {
+        border-collapse: collapse !important;
+      }
+
+      body {
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+      }
+
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+
+      @media screen and (max-width: 480px) {
+        .mobile-hide {
+          display: none !important;
+        }
+
+        .mobile-center {
+          text-align: center !important;
+        }
+      }
+
+      div[style*="margin: 16px 0;"] {
+        margin: 0 !important;
+      }
+    </style>
+
+    <body
+      style="
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #ffffff;
+      "
+      bgcolor="#ffffff"
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td
+            align="center"
+            style="background-color: #ffffff"
+            bgcolor="#ffffff"
+          >
+            <table
+              align="center"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              width="100%"
+              style="max-width: 600px"
+            >
+              <tr>
+                <td
+                  align="center"
+                  style="
+                    padding: 35px 35px 20px 35px;
+                    background-color: #ffffff;
+                  "
+                  bgcolor="#ffffff"
+                >
+                  <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td bgcolor="blue"><font color="white" face="微軟正黑體"><b>戶名 : {{ obj.comp_name }}</b></td>
+                      <td bgcolor="blue"><font color="white" face="微軟正黑體"><b>統編 : {{obj.comp_id }}</b></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" scope="rowgroup"><font face="微軟正黑體">
+                        <b>商機 : {{ Querry_list_obj.title }}</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><font face="微軟正黑體"><b>資料來源 : 新北市政府</b></td>
+                      <td><font face="微軟正黑體"><b>日期 : {{ Querry_list_obj.transaction_date }}</b></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" scope="rowgroup"><font face="微軟正黑體"><b>
+                        工程造價 : NTD {{ Querry_list_obj.address }}元 <br />
+                        縣市 : {{ Querry_list_obj.sale_price }} <br />
+                        使用分區 : {{ Querry_list_obj.shifting_area }} <br />
+                        地號/地址 : {{ Querry_list_obj.building_state }} <br />
+                        基地面積 : {{ house_age }} <br />
+                        總樓地板面積 : {{ Querry_list_obj.shifting_floor_number }}/{{Querry_list_obj.total_floor_number }}<br />
+                        構造 : {{ Querry_list_obj.usage }}<br />
+                        層棟戶數 :  <br />
+                        車位數 :  <br />
+                        車位種類 :  <br />
+                      </b></td>
+
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+  </head>
+</html>
