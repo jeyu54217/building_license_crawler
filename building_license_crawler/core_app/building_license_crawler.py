@@ -53,8 +53,7 @@ def download_ocr_pic():
             ocr_img64 = base64.b64encode(pic_file.read())
 
         params = {
-            "username": "%s" % 'ctbc_china_biz1',
-            "password": "%s" % 'ctbcbank',
+
             "captchaData": ocr_img64,
             "captchaType": 1001,
             }
