@@ -1,5 +1,5 @@
 """
-ASGI config for building_license_crawler project.
+ASGI config for building_licence_crawler project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'building_license_crawler.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'building_licence_crawler.settings')
 
 application = get_asgi_application()

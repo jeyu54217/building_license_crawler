@@ -1,11 +1,8 @@
 import time
-from pathlib import Path
-from urllib import response
 import requests
 import base64
 import json
-import shutil
-from selenium import webdriver
+
 
 start_time = time.time()  # timer
 
@@ -112,20 +109,17 @@ def main_crawler(ocr_code):
     
 if __name__ == '__main__':
     
-    # keyword = '中國信託'
-    # cookies = get_cookie()
+    print(get_raw_html())
     
-    # triger = download_ocr_pic()
-    # ocr_code = ocr_post(triger)
-    # main_crawler(ocr_code)
-    # download_ocr_pic()
     
-    import pandas as pd
-    from datetime import date
-    start_date = date(2008, 8, 15) 
-    end_date = date(2008, 9, 15)    # perhaps date.now()
+    
+    # for loop date dalta
+    # import pandas as pd
+    # from datetime import date
+    # start_date = date(2008, 8, 15) 
+    # end_date = date(2008, 9, 15)    # perhaps date.now()
 
-    print(pd.date_range(start = start_date, end = end_date).strftime('%Y%m%d').tolist())
+    # print(pd.date_range(start = start_date, end = end_date).strftime('%Y%m%d').tolist())
     
 
 

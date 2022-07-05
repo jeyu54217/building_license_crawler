@@ -82,3 +82,15 @@ $('#addRowChild').click(function(){
         window.location.href="http://127.0.0.1:8000/result_page/"
     });
 });
+
+
+
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    } );
+ 
+    table.buttons().container()
+        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+} );
