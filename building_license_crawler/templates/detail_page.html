@@ -3,162 +3,93 @@
 
 {% block content %}
 <div class="container-md">
-
-  <div class="row justify-content-around">
-    <h3>Details</h2>
-  </div>
-
-  <div class="row justify-content-center">
-    <table id="search-table">
-      <tr id="default-row">
-        <td>
-          <div class="input-group mb-3" >
-            <input class="form-control" type="text"  placeholder="Search..." aria-label="Search" aria-describedby="button-addon" >
-          </div>
-        </td>
-      </tr>
-    </table>
-      <div id="addRow" class="add">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-          <button id="addRowChild" type="button" class="btn btn-primary">+</button>
-          <button id="btn_search_submit" type="submit" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-warning">搜尋</button>
-        </div>
+    <div class="row justify-content-around">
+        <h3>統編待補清單</h2>
       </div>
-  </div>
-  
-  <div class="row justify-content-around  bg-light">
-    <div class="col-md-auto ">
-      <form class="form-inline">
-        <div class="form-group">
-          <label  class="mr-sm-2">主旨 </label>
-          <input type="text" name="lname" value='實價登陸 不動產交易' size="40" disabled="disabled" />
-        </div>
-        <div class="form-group">
-          <label  class="mr-sm-2"> ID </label>
-          <input type="text" id="detail_page_id" value={{ into_obj.id }}  size="10" disabled="disabled" />
-       </div>
-      </form>
-      
-      <form class="form-inline">
-        <div class="form-group">
-          <label  class="mr-sm-2"> 交易地址 </label>
-          <input type="text" name="lname" value={{ into_obj.address }} size="50" disabled="disabled" />
-       </div>
-       <div class="form-group">
-        <label  class="mr-sm-2">交易日期 </label>
-        <input type="text" name="lname" value={{ into_obj.transaction_date }} size="10" disabled="disabled" />
-     </div>
-      </form>
- 
-      <form class="form-inline">
-        <div class="form-group">
-          <label  class="mr-sm-2"> 交易總價 </label>
-          <input type="text" name="lname" value={{ into_obj.sale_price }} size="10"  disabled="disabled" />
-       </div>
-       <div class="form-group">
-        <label  class="mr-sm-2">總面積 </label>
-        <input type="text" name="lname" value={{ into_obj.shifting_area }} size="10" disabled="disabled" />
-     </div>
-      </form>
-
-      <form class="form-inline">
-        <div class="form-group">
-          <label  class="mr-sm-2"> 型態 </label>
-          <input type="text" name="lname" value={{ into_obj.building_state }} size="20" disabled="disabled" />
-       </div>
-       <div class="form-group">
-        <label  class="mr-sm-2">屋齡 </label>
-        <input type="text" name="lname" value={{ house_age }} size="10" disabled="disabled" />
-
-     </div>
-      </form>
-
-      <form class="form-inline">
-        <div class="form-group">
-          <label  class="mr-sm-2"> 樓別/樓高 </label>
-          <input type="text" name="lname" value= {{ into_obj.shifting_floor_number }}/{{ into_obj.total_floor_number }} size="20"   disabled="disabled" />
-       </div>
-       <div class="form-group">
-        <label  class="mr-sm-2">主要用途 </label>
-        <input type="text" name="lname" value={{ into_obj.usage }} size="10" disabled="disabled" />
-     </div>
-      </form>
-
-      <form class="form-inline">
+      <div class="container">
+        <form class="cf">
+          <div class="form-group">
+            <div class="dates row">
+              <label class="col-auto"><pre>戶名關鍵字</pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+              <label class="col-auto">日期</label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+            <br>
+            <div class="dates row">
+              <label class="col-auto"><pre>主旨     </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+            <br>
+            <div class="dates row">
+              <label class="col-auto">工程造價</label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+            <br>
+            <div class="dates row">
+              <label class="col-auto"><pre>地址     </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+              <label class="col-auto">使用分區</label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+            <br>
+            <div class="dates row">
+              <label class="col-auto"><pre>地號     </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+            <div class="dates row">
+              <label class="col-auto"><pre>基地面積 </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+              <label class="col-auto">總樓地板面積</label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+            <div class="dates row">
+              <label class="col-auto"><pre>構造     </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+              <label class="col-auto"><pre>層棟戶數     </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+            <div class="dates row">
+              <label class="col-auto"><pre>車位數   </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+              <label class="col-auto"><pre>車位種類    </pre></label>
+              <div class="col">
+                <input type="text" class="col form-control form-control-sm" name="name" autocomplete="off" required>
+              </div>
+            </div>
+          </div>
+          <button type="submit" id="btn_excel_submit" class="btn btn-warning justify-content-center">產出 EXCEL</button>
         
-      </div>
-      <div class="form-group">
-        <label  class="mr-sm-2">備註 </label>
-        <input type="text" name="lname" value={{ into_obj.notes }} size="50"  disabled="disabled" />
-      </div>
-    </form>
-    
-    <form method="post" action="{% url 'detail_page' %}" >
-      <label class="form-check-label" for="inlineCheckbox1">關係人交易</label>
-      {% if  into_obj.related_person_transaction == 0 %}
-      <input type="checkbox" name="checkbox" class="inline checkbox " size="10"  id="checkbox1" value="{{ into_obj.id }}" >
-      <button>
-        <input type="hidden" name="save"  id="btn_save" value="{{ into_obj.id }}"/>
-          完成 (SAVE)
-          <i class="fa fa-check-square" aria-hidden="true"></i>
-      </button>
-      {% elif  into_obj.related_person_transaction == 1 %}
-      {% comment %} 待補 update undo {% endcomment %}
-      <input type="checkbox" name="checkbox" class="inline checkbox " size="10"  id="checkbox1" value="{{ into_obj.id }}" checked >
-      <button>
-        <input type="hidden" name="save"  id="btn_save" value="{{ into_obj.id }}"/>
-          完成 (SAVE)
-          <i class="fa fa-check-square" aria-hidden="true"></i>
-      </button>
-      {% endif %}
-    </form>
-
-    <form method="post" action="{% url 'detail_page' %}" >
-    <button>
-      <input type="hidden" name="delete"  id="btn_save" value="{{ into_obj.id }}"/>
-        上一頁 (DELETE)
-        <i class="fa fa-check-square" aria-hidden="true"></i>
-    </button>
-    </form>
-  </div>
-  </form>
-
-
-<!-- Loading Modal Bootstrape 4.3-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <br><br>
-      <div class="modal-body">
-        <div class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-          <h5>Loading...</h5>
-          <br><br>
+        </form>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
 
-    </div>
-  </div>
-
-  <h5>Reference Links : </h5>
-  <div class="row">
-    <p><a href="https://www.google.com/search?q={{ address_num2cn }}">  1. Google 地址搜尋 (中文樓層)</a></p>
-  </div>
-  <div class="row">
-    <p><a href="https://www.google.com/search?q={{ address_cn2num }}">  2. Google 地址搜尋 (數字樓層)</a></p>
-  </div>
-  <div class="row">
-    <p><a href="https://www.twincn.com/Lq.aspx?q={{ address_num2cn }}">  3. 台灣公司網 地址搜尋 (中文樓層)</a></p>
-  </div>
-  <div class="row">
-    <p><a href="https://www.twincn.com/Lq.aspx?q={{ address_cn2num }}">  4. 台灣公司網 地址搜尋 (數字樓層)</a></p>
-  </div>
-
+    
 </div>
 {% endblock content %}
+`

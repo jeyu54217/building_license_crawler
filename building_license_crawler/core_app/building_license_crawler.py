@@ -14,7 +14,7 @@ SOURCE_URL_1 = "https://building-management.publicwork.ntpc.gov.tw/bm_query.jsp?
 SOURCE_URL_2 = "https://building-management.publicwork.ntpc.gov.tw/bm_list.jsp"
 
 # CHROME_DRIVER_PATH = f"{Path(__file__).resolve().parent}\chromedriver.exe"
-OCR_PIC_PATH = 'C:\\Users\\Administrator\Desktop\\image.jpg'
+
 
 # def get_cookie():
 #     HEADERS = { 
@@ -32,33 +32,33 @@ OCR_PIC_PATH = 'C:\\Users\\Administrator\Desktop\\image.jpg'
 #     return (cookies_1 , cookies_2)
     
     
-def download_ocr_pic():
-
-
-    pic_url ='https://building-management.publicwork.ntpc.gov.tw/ImageServlet'
+def get_raw_html():
+    OCR_IMG_URL ='https://building-management.publicwork.ntpc.gov.tw/ImageServlet'
+    OCR_IMG_PATH = 'C:\\Users\\Administrator\\Desktop\\image.jpg'
     
-    req = requests.session()
-    get_rsp = req.get(
-        pic_url,
+    session_req = requests.session()
+    ocr_rsponse = session_req.get(
+        OCR_IMG_URL,
         stream = True,
         verify = False,
         )
-    
-    if get_rsp.status_code == 200:
-        with open("C:\\Users\\Administrator\\Desktop\\image.jpg", 'wb') as f:
-            f.write(get_rsp.content)
+    if ocr_rsponse.status_code == 200:
+       # Download OCR image
+        with open(OCR_IMG_PATH, 'wb') as f:
+            f.write(ocr_rsponse.content)
             f.close()
             
-        with open(OCR_PIC_PATH, 'rb') as pic_file:
-            ocr_img64 = base64.b64encode(pic_file.read())
-
+       # Post 冰拓 OCR service to get the code
+        with open(OCR_IMG_PATH, 'rb') as ocr_img:
+            ocr_img64 = base64.b64encode(ocr_img.read()) # Base64 Encod on IMG
         params = {
-
+            "username": "%s" % 'ctbc_china_biz1',
+            "password": "%s" % 'ctbcbank',
             "captchaData": ocr_img64,
             "captchaType": 1001,
             }
         
-        post_ocr_rsp = req.post("http://www.bingtop.com/ocr/upload/", data = params)
+        post_ocr_rsp = session_req.post("http://www.bingtop.com/ocr/upload/", data = params)
         dictdata = json.loads(post_ocr_rsp.text)
         ocr_code = dictdata['data']['recognition']
         
@@ -71,42 +71,17 @@ def download_ocr_pic():
             'Z1': int(ocr_code),  # OCR code
             }
     
-        post_rsp = req.post(
+        post_rsp = session_req.post(
             SOURCE_URL_2,
             data = PAYLOAD,
             verify = False,
-            ).text  
+            )
         
-        print(post_rsp)
+        html_raw = post_rsp.text
         
+        return html_raw
         
-
     
-
-    
-    # with open(self.captcha_path, 'wb') as file:
-    #         file.write(base64.b64decode(img_base64))
-    #         file.close()
-            # captcha_result = self.get_ocr_result(self.captcha_path, 1001)
-            # return captcha_result
-
-# 冰拓_OCR : https://www.bingtop.com/
-def ocr_post(triger):
-    if triger == 'ok':
-        with open(OCR_PIC_PATH, 'rb') as pic_file:
-            ocr_img64 = base64.b64encode(pic_file.read())
-
-        params = {
-            "username": "%s" % 'ctbc_china_biz1',
-            "password": "%s" % 'ctbcbank',
-            "captchaData": ocr_img64,
-            "captchaType": 1001,
-            }
-    
-        response = requests.post("http://www.bingtop.com/ocr/upload/", data = params)
-        dictdata = json.loads(response.text)
-        ocr_code = dictdata['data']['recognition']
-        return ocr_code
 
     
 def main_crawler(ocr_code):
